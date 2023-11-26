@@ -40,5 +40,23 @@ public class App
         // at the moment that we filter, we can have a null result...so, we need to check the result before downStreaming
         String checkedResult = goalKeeper.filter(g -> g.length() > 9).orElse("No result");
         System.out.println(checkedResult);
+
+
+        // ifPresent, ifPresentOrElse
+        Optional<String> name = Optional.of("Toby");
+        name.ifPresent(System.out::println);
+
+        // name.ifPresentOrElse(System.out::println, () -> { 
+        //     System.out.println("Yo");
+        // });
+
+        
+        // orElse & orElseGet
+        Optional<String> arsenal = Optional.empty();
+        String teamRes = arsenal.orElse("Liverpool"); // we pass an option directly
+        System.out.println(teamRes);
+
+        String teamResBis = arsenal.orElseGet(() -> { return "Westham"; }); // we pass a Supplier
+        System.out.println(teamResBis);
     }
 }
