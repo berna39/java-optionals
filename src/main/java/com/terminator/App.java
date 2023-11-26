@@ -8,8 +8,7 @@ import java.util.Optional;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
+    public static void main( String[] args ) {
         // Basics
         Optional<Object> obj = Optional.empty();
         System.out.println(obj.isPresent());
@@ -58,5 +57,12 @@ public class App
 
         String teamResBis = arsenal.orElseGet(() -> { return "Westham"; }); // we pass a Supplier
         System.out.println(teamResBis);
+
+        // orElseThrough
+        Optional<String> country = Optional.empty();
+        String countryRes = country.orElseThrow(IllegalArgumentException::new);
+        System.out.println(countryRes);
+
+        // in newer Java versions, we can only use country.orElseThrow();, it will create an exception instance only
     }
 }
